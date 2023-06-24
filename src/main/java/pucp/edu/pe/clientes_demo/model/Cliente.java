@@ -2,15 +2,15 @@ package pucp.edu.pe.clientes_demo.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
+@Entity
 @Table(name = "cliente")
 public class Cliente {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long codigo;
 
     @Column(name = "nombre")
@@ -25,4 +25,13 @@ public class Cliente {
     @Column(name = "dni")
     String dni;
 
+    public Cliente() {
+    }
+
+    public Cliente(String nombre, String apellidPaterno, String apellidoMaterno, String dni) {
+        this.nombre = nombre;
+        this.apellidPaterno = apellidPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.dni = dni;
+    }
 }
